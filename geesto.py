@@ -42,7 +42,7 @@ class Aplicativo(Relatorios):
 
 
     def janela(self):
-        self.raiz.title('Gestão de Estoque')
+        self.raiz.title('Gestão de Estoque - Rota Bebidas')
         self.raiz.geometry("{0}x{0}+0+0".format(self.raiz.winfo_screenwidth(), self.raiz.winfo_screenmmheight()))
         # self.raiz.geometry('1000x600+150+50')
         #self.raiz.overrideredirect(True) # trava a tela
