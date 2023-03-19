@@ -97,7 +97,7 @@ class Aplicativo(Relatorios):
         self.qd_movimento.place(relheight=0.68, relwidth=0.95, relx=0.02, rely=0.3)
 
         self.lf_filtro_mov = LabelFrame(self.raiz,text='Filtro do Movimento', width=180, height=90)
-        self.lf_filtro_mov.place(relx=0.85,rely=0.1)
+        self.lf_filtro_mov.place(relx=0.80,rely=0.1)
 
 
     def lista(self):
@@ -155,11 +155,11 @@ class Aplicativo(Relatorios):
 
         self.bt_novo.place(relx=0.03, rely=0.2,width=bt_lar, height=bt_alt)
         self.bt_limpar.place(relx=0.1, rely=0.2,width=bt_lar, height=bt_alt)
-        self.bt_buscar.place(relx=0.17, rely=0.2,width=bt_lar, height=bt_alt,)
+        self.bt_buscar.place(relx=0.17, rely=0.2,width=bt_lar, height=bt_alt)
 
         # botão para chamar a lista de pedido
         self.bt_lt_pedido = Button(self.raiz,text='Lista', bd=1.5, command=self.tela_lista_pedido)
-        self.bt_lt_pedido.place(relx=0.85, rely=0.02)
+        self.bt_lt_pedido.place(relx=0.15, rely=0.06, height=bt_alt, width=bt_lar)
 
     
     def dados_movimento(self):
@@ -184,7 +184,7 @@ class Aplicativo(Relatorios):
         self.ent_qtd = Entry(self.qd_dados, width=12)
         #self.ent_nregistro = Entry(self.qd_dados, width=15,bg=tl_bg)
         self.ent_preco = Entry(self.qd_dados, width=10)
-        self.ent_obs = Entry(self.qd_dados, width=77)
+        self.ent_obs = Entry(self.qd_dados, width=55)
         self.ent_data = Entry(self.qd_dados, width=11)
         self.ent_estoque = Entry(self.qd_dados, width=10)
 
@@ -196,8 +196,8 @@ class Aplicativo(Relatorios):
         self.rt_produto.place(relx=0,rely=0.11)
         self.ent_produto.place(relx=0, rely=0.22)
 
-        self.rt_qtd.place(relx=0.84,rely=0.11)
-        self.ent_qtd.place(relx=0.84, rely=0.22)
+        self.rt_qtd.place(relx=0.64,rely=0.11)
+        self.ent_qtd.place(relx=0.64, rely=0.22)
 
         self.rt_cod.place(relx=0, rely=0.45)
         self.ent_cod.place(relx=0, rely=0.58)
@@ -208,11 +208,11 @@ class Aplicativo(Relatorios):
         self.rt_estoque.place(relx=0.5, rely=0.45)
         self.ent_estoque.place(relx=0.5, rely=0.58)
 
-        self.rt_preco.place(relx=0.69, rely=0.45)
-        self.ent_preco.place(relx=0.69, rely=0.58)
+        self.rt_preco.place(relx=0.64, rely=0.45)
+        self.ent_preco.place(relx=0.64, rely=0.58)
 
-        self.rt_data.place(relx=0.85, rely=0.45)
-        self.ent_data.place(relx=0.85, rely=0.58)
+        self.rt_data.place(relx=0.64, rely=0.75)
+        self.ent_data.place(relx=0.64, rely=0.88)
 
         self.rt_obs.place(relx=0, rely=0.81)
         self.ent_obs.place(relx=0.13, rely=0.81)
@@ -254,7 +254,7 @@ class Aplicativo(Relatorios):
         self.data_filtro_mov.place(relx=0.41, rely=0.01)
         
         self.bt_filtro_mov = Button(self.lf_filtro_mov, text='Filtrar', bd=1.5, command=self.atualiza_mov)
-        self.bt_filtro_mov.place(relx=0.25, rely=0.46)
+        self.bt_filtro_mov.place(relx=0.25, rely=0.46, height=bt_alt, width=bt_lar)
 
 
         #chama funções de busca a partir das teclas Enter (principal e do teclado numérico) para cod barra, codigo e descrição
@@ -284,7 +284,7 @@ class Aplicativo(Relatorios):
         """configurações da tela"""
         self.tl_prod = Toplevel(self.raiz)
         self.tl_prod.title('Cadastro de Produtos')
-        self.tl_prod.geometry('700x650+400+30')
+        self.tl_prod.geometry('700x650+200+30')
         #self.tl_prod.config(bg=tl_bg)
         #self.tl_prod.minsize(width=600, height=600)
         self.tl_prod.resizable(True, True)
@@ -425,7 +425,7 @@ class Aplicativo(Relatorios):
         """tela para cadastro de categorias de produtos"""
         self.tl_categ = Toplevel(self.raiz)
         self.tl_categ.title('Cadastro de Categorias')
-        self.tl_categ.geometry('400x500+450+30')
+        self.tl_categ.geometry('400x500+250+30')
         #self.tl_categ.config(bg=tl_bg)
         #self.tl_categ.minsize(width=400, height=200)
         self.tl_categ.resizable(False, False)
@@ -494,7 +494,7 @@ class Aplicativo(Relatorios):
         """tela para buscar os produtos cadastrados a partir de movimento """
         self.tl_bsc_mov = Toplevel(self.raiz)
         self.tl_bsc_mov.title('Buscar produto')
-        self.tl_bsc_mov.geometry('700x650+400+30')
+        self.tl_bsc_mov.geometry('700x650+200+30')
         #self.tl_bsc_mov.config(bg=tl_bg)
         #self.tl_bsc_mov.minsize(width=600, height=600)
         self.tl_bsc_mov.resizable(False, False)
@@ -544,7 +544,7 @@ class Aplicativo(Relatorios):
 
         self.tl_frm_pagto = Toplevel(self.raiz)
         self.tl_frm_pagto.title('Cadastro de Forma de Pagamento')
-        self.tl_frm_pagto.geometry('400x500+450+30')
+        self.tl_frm_pagto.geometry('400x500+250+30')
         #self.tl_frm_pagto.config(bg=tl_bg)
         #self.tl_frm_pagto.minsize(width=400, height=200)
         self.tl_frm_pagto.resizable(False, False)
@@ -638,7 +638,7 @@ class Aplicativo(Relatorios):
 
         self.tl_usuario = Toplevel(self.raiz)
         self.tl_usuario.title('Cadastro de Usuários')
-        self.tl_usuario.geometry('400x500+450+30')
+        self.tl_usuario.geometry('400x500+250+30')
         #self.tl_usuario.config(bg=tl_bg)
         #self.tl_usuario.minsize(width=400, height=200)
         self.tl_usuario.resizable(False, False)
@@ -704,7 +704,7 @@ class Aplicativo(Relatorios):
 
         self.tl_lt_pedido = Toplevel(self.raiz)
         self.tl_lt_pedido.title('Lista do Pedido')
-        self.tl_lt_pedido.geometry('800x700+400+30')
+        self.tl_lt_pedido.geometry('800x700+200+30')
         self.tl_lt_pedido.resizable(False, False)
         
         # quadros para dados do produto e para a lista do produtos
@@ -812,7 +812,7 @@ class Aplicativo(Relatorios):
         """tela para buscar os produtos cadastrados a partir da tela lista de pedido  """
         self.tl_bsc_lp = Toplevel(self.tl_lt_pedido)
         self.tl_bsc_lp.title('Buscar produto')
-        self.tl_bsc_lp.geometry('700x650+400+30')
+        self.tl_bsc_lp.geometry('700x650+200+30')
         self.tl_bsc_lp.resizable(False, False)
 
         """ quadro, lista e barra de rolagem"""
