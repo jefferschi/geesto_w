@@ -1,4 +1,4 @@
-# geesto
+# geesto - Gestão de Estoque, vendas e margem bruta de lucro.
 
 Este projeto nasceu com o intuito do estudo da linguagem Python e biblioteca Tkinter, além de atender a uma pequena demanda de um amigo em sua distribuidora de bebidas. 
 A princípio, iniciei o projeto tendo como base a programação procedural, pouco conhecendo de POO, desenvolvendo uma aplicação para controlar o estoque, somente. 
