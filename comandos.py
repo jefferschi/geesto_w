@@ -1160,6 +1160,19 @@ class Comandos():
                         frm_pagto_lp, vl_taxa, custo_total, mrg_brt))
                         
             self.conn.commit()
+
+            # movimenta o estoque
+            # pega o estoque atual do produto
+            self.cursor.execute("SELECT estoque FROM produtos WHERE codigo = ('"+cod+"')")
+            dados_est = self.cursor.fetchone()
+            estoque_atual = int(dados_est[0])
+            
+            # verifica o movimento entrada ou saída
+            if mov_num == 2:
+                qtd *= -1
+            
+            self.calcula_estoque(estoque_atual,qtd,cod) 
+
         self.desconecta_bd()
         #self.lista_prod.clear() #esta função está ligada ao evento de fechar a tela de pedido, portanto seria redundante.
         self.tl_lt_pedido.destroy()
