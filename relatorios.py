@@ -373,3 +373,6 @@ class Relatorios(Comandos):
             pass
         """
     
+    def cupom_nfiscal(self):
+
+        messagebox.showinfo("Impressão","Cupom impresso!", parent=self.tl_lt_pedido)

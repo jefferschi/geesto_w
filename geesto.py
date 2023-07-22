@@ -747,7 +747,15 @@ class Aplicativo(Relatorios):
         self.bt_limpar_lp.place(relx=0.8, rely=0.45,width=bt_lar, height=bt_alt)
         self.bt_buscar_lp.place(relx=0.9, rely=0.45,width=bt_lar, height=bt_alt)
 
+        # para salvar os itens na tabela movimento
+        self.bt_salvar_lp = Button(self.qd_tl_lt_pedido,text='Salvar', bd=1.5, command=self.novo_movimento_lp) 
+        self.bt_salvar_lp.place(relx=0.6, rely=0.71,width=bt_lar, height=bt_alt)
 
+        # para imprimir cupom não  fiscal dos itens na lista de pedido
+        self.bt_imprimir_lp = Button(self.qd_tl_lt_pedido,text='Imprimir', bd=1.5, command=self.cupom_nfiscal) 
+        self.bt_imprimir_lp.place(relx=0.7, rely=0.71,width=bt_lar, height=bt_alt)
+        
+        
         #atualização dos dados para a combobox forma pagamento da tela lista do pedido
         self.conecta_bd()
         self.dados = self.cursor.execute(""" SELECT DISTINCT(forma_pagto) as forma_pagto FROM formas_pagto""")
@@ -760,9 +768,7 @@ class Aplicativo(Relatorios):
         self.comb_frm_pagto_lp.place(relx=0.01, rely=0.71)
         self.comb_frm_pagto_lp.insert(0,'DINHEIRO')
 
-        # para salvar os itens na tabela movimento
-        self.bt_salvar_lp = Button(self.qd_tl_lt_pedido,text='Salvar', bd=1.5, command=self.novo_movimento_lp) 
-        self.bt_salvar_lp.place(relx=0.6, rely=0.71,width=bt_lar, height=bt_alt)
+       
         
         # treeview para a lista do pedido
         self.barra_lt_ped = Scrollbar(self.qd_lt_pedido)
@@ -806,7 +812,10 @@ class Aplicativo(Relatorios):
         self.lt_pedido.bind("<Double-1>", self.remove_item_lp) #chama a função remove_item para retirar produto da lista de pedido
         
         #limpa a lista de pedidos quando a janela da tela da lista é fechada
-        self.tl_lt_pedido.protocol('WM_DELETE_WINDOW',self.lista_prod.clear())
+        try:
+            self.tl_lt_pedido.protocol('WM_DELETE_WINDOW',self.lista_prod.clear())
+        except AttributeError:
+            pass
     
     def tela_busca_lp(self,event):
         """tela para buscar os produtos cadastrados a partir da tela lista de pedido  """
@@ -853,5 +862,9 @@ class Aplicativo(Relatorios):
         self.lt_busca_lp.focus(self.lt_busca_lp.get_children()[0]) # para selecionar o primeiro registro da lista, mas não está funcionando
         
         self.lt_busca_lp.bind('<Double-1>', self.selec_prod_lp)
+        
+    
+        
+        
 
 Aplicativo()
