@@ -377,18 +377,53 @@ class Relatorios(Comandos):
     
     def cupom_nfiscal(self):
 
-        #lista_produto = self.lista_prod
+        # variáveis 
+        data_atual = date.today()
+        data_hora = datetime.now()
+        data_formatada = data_hora.strftime('%d/%m/%Y %H:%M:%S')
+        data = data_formatada
+
+        frm_pagto_lp = self.comb_frm_pagto_lp.get()
+        lista = self.lista_prod
+       
+        empresa = "ROTA BEBIDAS DISTRIBUIDORA"
+        end_empresa = "Av. Min. Euríco Sales de Águiar, 158"
+        bairro_empresa = "Campo Grande, Cariacica"
+        tel_empresa = "TEL.: (27) 99779-8617"
+        
         arq_temp = tempfile.mktemp(".txt")
 
         with open(arq_temp, "w") as arquivo:
+            
+            # cabeçalho
+            arquivo.write("*"*36+"\n")
+            arquivo.write(empresa+"\n")
+            arquivo.write(end_empresa+"\n")
+            arquivo.write(bairro_empresa+"\n")
+            arquivo.write(tel_empresa+"\n")
+            arquivo.write("*"*36+"\n")
 
-            for reg, item in enumerate(self.lista_prod):
-                prod, qtd, preco, vl_total, cod = item
+            #informações da venda
+            arquivo.write("Venda dia "+data+"\n")
+            arquivo.write("Forma Pagto: "+frm_pagto_lp+"\n")
+
+            # campos de cabeçalho
+            arquivo.write("="*36+"\n")
+            arquivo.write("PROD\t\tQTD\t\tTOTAL\n")
+
+            for reg, item in enumerate(lista):
+                prod, qtd, preco, vl_total, cod = item                
                 vl_pedido =+ vl_total
+
+                qtd_f = "{:.2f}".format(qtd)
+                vl_total_f = "{:.2f}".format(vl_total)
+                vl_pedido_f =+ vl_total
+
+                arquivo.write(prod+"\t\t"+qtd_f+"\t\t"+vl_total_f+"\n")
             
-                arquivo.write(prod)
-            
-            
+            vl_pedido_f = "{:.2f}".format(vl_pedido)
+            arquivo.write("="*36+"\n")
+            arquivo.write("Valor total -> "+vl_pedido_f)
             
         os.startfile(arq_temp,"print")
 
