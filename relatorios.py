@@ -380,7 +380,7 @@ class Relatorios(Comandos):
     def cupom_nfiscal(self):
 
         # input para endereço de entrega
-        end_entrega = simpledialog.askstring(title="Entrega", prompt="Endereço de entrega")
+        end_entrega = simpledialog.askstring(title="Entrega", prompt="Digite o endereço de entrega")
 
         # variáveis 
         vl_pedido = 0.0
@@ -433,7 +433,7 @@ class Relatorios(Comandos):
             
             vl_pedido_f = "{:.2f}".format(vl_pedido)
             arquivo.write("="*45+"\n")
-            arquivo.write("Valor total -> "+vl_pedido_f+"\n\n")
+            arquivo.write("Valor Total -> "+vl_pedido_f+"\n\n")
             arquivo.write("*"*45+"\n\n")
             arquivo.write("ENDEREÇO DE ENTREGA: \n"+end_entrega)
             
