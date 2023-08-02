@@ -3,6 +3,8 @@ from tkinter import *
 from datetime import *
 import pymsgbox as pymb
 from tkinter import messagebox
+from tkinter import simpledialog
+
 
 import csv
 import pandas as pd
@@ -377,6 +379,9 @@ class Relatorios(Comandos):
     
     def cupom_nfiscal(self):
 
+        # input para endereço de entrega
+        end_entrega = simpledialog.askstring(title="Entrega", prompt="Endereço de entrega")
+
         # variáveis 
         vl_pedido = 0.0
         data_atual = date.today()
@@ -430,7 +435,7 @@ class Relatorios(Comandos):
             arquivo.write("="*45+"\n")
             arquivo.write("Valor total -> "+vl_pedido_f+"\n\n")
             arquivo.write("*"*45+"\n\n")
-            arquivo.write("ENDEREÇO DE ENTREGA: \n")
+            arquivo.write("ENDEREÇO DE ENTREGA: \n"+end_entrega)
             
         os.startfile(arq_temp,"print")
 
