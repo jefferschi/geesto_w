@@ -6,7 +6,9 @@ from tkinter import messagebox
 
 import csv
 import pandas as pd
-import openpyxl
+import os
+import tempfile
+
 #from decimal import Decimal #pesquisar depois como usar, testei na tela de pedido e não funcionou
 
 #biblioteca nativa para manipulaçã de banco de dados SQLite
@@ -375,4 +377,19 @@ class Relatorios(Comandos):
     
     def cupom_nfiscal(self):
 
-        messagebox.showinfo("Impressão","Cupom impresso!", parent=self.tl_lt_pedido)
+        #lista_produto = self.lista_prod
+        arq_temp = tempfile.mktemp(".txt")
+
+        with open(arq_temp, "w") as arquivo:
+
+            for reg, item in enumerate(self.lista_prod):
+                prod, qtd, preco, vl_total, cod = item
+                vl_pedido =+ vl_total
+            
+                arquivo.write(prod)
+            
+            
+            
+        os.startfile(arq_temp,"print")
+
+    

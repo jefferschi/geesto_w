@@ -752,7 +752,7 @@ class Aplicativo(Relatorios):
         self.bt_salvar_lp.place(relx=0.6, rely=0.71,width=bt_lar, height=bt_alt)
 
         # para imprimir cupom não  fiscal dos itens na lista de pedido
-        self.bt_imprimir_lp = Button(self.qd_tl_lt_pedido,text='Imprimir', bd=1.5, command=self.cupom_nfiscal) 
+        self.bt_imprimir_lp = Button(self.qd_tl_lt_pedido,text='Imprimir', bd=1.5, command=self.cupom_nfiscal)
         self.bt_imprimir_lp.place(relx=0.7, rely=0.71,width=bt_lar, height=bt_alt)
         
         
@@ -863,8 +863,7 @@ class Aplicativo(Relatorios):
         
         self.lt_busca_lp.bind('<Double-1>', self.selec_prod_lp)
         
-    
-        
+           
         
 
 Aplicativo()
