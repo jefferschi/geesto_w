@@ -378,6 +378,7 @@ class Relatorios(Comandos):
     def cupom_nfiscal(self):
 
         # variáveis 
+        vl_pedido = 0.0
         data_atual = date.today()
         data_hora = datetime.now()
         data_formatada = data_hora.strftime('%d/%m/%Y %H:%M:%S')
@@ -396,34 +397,40 @@ class Relatorios(Comandos):
         with open(arq_temp, "w") as arquivo:
             
             # cabeçalho
-            arquivo.write("*"*36+"\n")
+            arquivo.write("*"*45+"\n")
             arquivo.write(empresa+"\n")
             arquivo.write(end_empresa+"\n")
             arquivo.write(bairro_empresa+"\n")
             arquivo.write(tel_empresa+"\n")
-            arquivo.write("*"*36+"\n")
+            arquivo.write("*"*45+"\n\n")
 
             #informações da venda
             arquivo.write("Venda dia "+data+"\n")
-            arquivo.write("Forma Pagto: "+frm_pagto_lp+"\n")
+            arquivo.write("Forma Pagto: "+frm_pagto_lp+"\n\n")
 
             # campos de cabeçalho
-            arquivo.write("="*36+"\n")
-            arquivo.write("PROD\t\tQTD\t\tTOTAL\n")
+            arquivo.write("="*45+"\n")
+            arquivo.write("PROD\t\t\t\tQTD\tTOTAL\n\n")
 
             for reg, item in enumerate(lista):
                 prod, qtd, preco, vl_total, cod = item                
-                vl_pedido =+ vl_total
+                vl_pedido += vl_total
 
-                qtd_f = "{:.2f}".format(qtd)
-                vl_total_f = "{:.2f}".format(vl_total)
-                vl_pedido_f =+ vl_total
+                vl_total_f = "{:.2f}".format(vl_total)                
 
-                arquivo.write(prod+"\t\t"+qtd_f+"\t\t"+vl_total_f+"\n")
+                tam_txt_prod = len(prod)
+                if tam_txt_prod > 30:
+                    tam_txt_prod = 30
+                
+                espaco1 = str(" "*(32-tam_txt_prod))
+
+                arquivo.write(prod[:30]+espaco1+str(qtd)+"\t"+vl_total_f+"\n")
             
             vl_pedido_f = "{:.2f}".format(vl_pedido)
-            arquivo.write("="*36+"\n")
-            arquivo.write("Valor total -> "+vl_pedido_f)
+            arquivo.write("="*45+"\n")
+            arquivo.write("Valor total -> "+vl_pedido_f+"\n\n")
+            arquivo.write("*"*45+"\n\n")
+            arquivo.write("ENDEREÇO DE ENTREGA: \n")
             
         os.startfile(arq_temp,"print")
 
